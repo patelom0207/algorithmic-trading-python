@@ -12,7 +12,3 @@ stocks = pd.read_csv(file_path)
 #Acquiring API Token
 from .secrets import IEX_CLOUD_API_TOKEN
 
-print("check")
-stocks = ["AAPL", "MSFT", "GOOGL", "AMZN", "FB"]  # Example subset of S&P 500 stocks
-for i in range(len(stocks)):
-    print(f"Processing stock: {stocks[i]}")
