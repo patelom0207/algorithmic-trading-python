@@ -16,3 +16,7 @@ from .secrets import IEX_CLOUD_API_TOKEN
 symbol = "AAPL"
 api_url = f'https://sandbox.iexapis.com/stock/{symbol}/quote/?tokan={IEX_CLOUD_API_TOKEN}'
 data = requests.get(api_url).json()
+
+#Parsing the data
+data['latestPrice']
+data['marketCap']
