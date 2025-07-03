@@ -20,3 +20,8 @@ data = requests.get(api_url).json()
 #Parsing the data
 data['latestPrice']
 data['marketCap']
+
+#Adding stocks data to pandas DataFrame
+my_columns = ['Ticker', 'Price','Market Capitalization', 'Number Of Shares to Buy']
+final_dataframe = pd.DataFrame(columns = my_columns)
+final_dataframe = final_dataframe.append(pd.Series(['AAPL', data['latestPrice'], data['marketCap'], 'N/A'], index = my_columns), ignore_index = True)
