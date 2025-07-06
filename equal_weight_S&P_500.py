@@ -45,10 +45,11 @@ symbol_groups = list(chunks(stocks['Ticker'], 100))
 symbol_strings = []
 for i in range(0, len(symbol_groups)):
     symbol_strings.append(','.join(symbol_groups[i]))
-
+#     print(symbol_strings[i])
 final_dataframe = pd.DataFrame(columns = my_columns)
 
 for symbol_string in symbol_strings:
+#     print(symbol_strings)
     batch_api_call_url = f'https://sandbox.iexapis.com/stable/stock/market/batch/?types=quote&symbols={symbol_string}&token={IEX_CLOUD_API_TOKEN}'
     data = requests.get(batch_api_call_url).json()
     for symbol in symbol_string.split(','):
