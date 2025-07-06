@@ -25,3 +25,10 @@ data['marketCap']
 my_columns = ['Ticker', 'Price','Market Capitalization', 'Number Of Shares to Buy']
 final_dataframe = pd.DataFrame(columns = my_columns)
 final_dataframe = final_dataframe.append(pd.Series(['AAPL', data['latestPrice'], data['marketCap'], 'N/A'], index = my_columns), ignore_index = True)
+
+#Looping through tickers in all S&P 500 stocks
+final_dataframe = pd.DataFrame(columns = my_columns)
+for symbol in stocks['Ticker']:
+    api_url = 'https://sandbox.iexapis.com/stable/stock/{symbol}/quote?token={IEX_CLOUD_API_TOKEN}'
+    data = requests.get(api_url).json()
+    final_dataframe = final_dataframe.append(pd.Series([symbol, data['latestPrice'], data['marketCap'], 'N/A'], index = my_columns), ignore_index = True)
