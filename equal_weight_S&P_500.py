@@ -56,3 +56,17 @@ for symbol_string in symbol_strings:
         final_dataframe = final_dataframe.append(pd.Series([symbol, data[symbol]['quote']['latestPrice'], data[symbol]['quote']['marketCap'], 'N/A'], index = my_columns), ignore_index = True)
     
 final_dataframe
+
+#Calculating number of shares to buy
+portfolio_size = input("Enter the value of your portfolio:")
+
+try:
+    val = portfolio_size
+except ValueError:
+    print("That's not a number! \n Try again:")
+    portfolio_size = input("Enter the value of your portfolio:")
+
+position_size = float(portfolio_size) / len(final_dataframe.index)
+for i in range(0, len(final_dataframe['Ticker'])-1):
+    final_dataframe.loc[i, 'Number Of Shares to Buy'] = math.floor(position_size / final_dataframe['Price'][i])
+final_dataframe
