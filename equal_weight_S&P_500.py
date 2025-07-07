@@ -61,7 +61,7 @@ final_dataframe
 portfolio_size = input("Enter the value of your portfolio:")
 
 try:
-    val = portfolio_size
+    val = float(portfolio_size)
 except ValueError:
     print("That's not a number! \n Try again:")
     portfolio_size = input("Enter the value of your portfolio:")
